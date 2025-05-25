@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://0nlpo04877a"]
+
+[ext_resource type="Script" uid="uid://bxg1wvmr8qskh" path="res://scripts/junior.gd" id="1_gwq1b"]
+[ext_resource type="Texture2D" uid="uid://cypy0768c0vbu" path="res://assets/junior-pixel.png" id="1_lnnh4"]
+
+[node name="Node2D" type="Node"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_gwq1b")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-0.999939, 1.00003)
+scale = Vector2(5.15625, 5.15625)
+texture = ExtResource("1_lnnh4")
+
+[node name="hand1" type="CPUParticles2D" parent="CharacterBody2D"]
+position = Vector2(-104, -83)
+angle_max = 189.1
+scale_amount_min = 0.0
+scale_amount_max = 32.0
+color = Color(5.48691e-06, 0.720157, 0.720791, 1)
+
+[node name="hand2" type="CPUParticles2D" parent="CharacterBody2D"]
+position = Vector2(88, -90)
+angle_max = 174.5
+scale_amount_min = 0.0
+scale_amount_max = 32.0
+color = Color(0.860776, 0.522893, 0.506512, 1)
