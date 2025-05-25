@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c04q3h0l1ks6y"]
 
-[ext_resource type="PackedScene" uid="uid://0nlpo04877a" path="res://scenes/junior.tscn" id="1_yjip8"]
+[ext_resource type="Script" uid="uid://bxg1wvmr8qskh" path="res://scripts/junior.gd" id="1_wmppx"]
+[ext_resource type="Texture2D" uid="uid://cypy0768c0vbu" path="res://assets/junior-pixel.png" id="2_ywy21"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3h184"]
 bg_color = Color(0.00748452, 0.00238963, 0.00077146, 1)
@@ -8,11 +9,6 @@ bg_color = Color(0.00748452, 0.00238963, 0.00077146, 1)
 [sub_resource type="Curve" id="Curve_3h184"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0.295455, 0.235955), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_cojph"]
-_limits = [-1.0, 1.0, 0.0, 1.0]
-_data = [Vector2(0.238636, 0.303371), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Draw" type="Node2D"]
@@ -34,12 +30,19 @@ offset_right = 3662.0
 offset_bottom = 2503.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3h184")
 
-[node name="Character" parent="." instance=ExtResource("1_yjip8")]
+[node name="Character" type="Node" parent="."]
 
-[node name="CharacterBody2D" parent="Character" index="0"]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Character"]
 position = Vector2(659, 299)
+script = ExtResource("1_wmppx")
 
-[node name="hand1" parent="Character/CharacterBody2D" index="1"]
+[node name="Sprite2D" type="Sprite2D" parent="Character/CharacterBody2D"]
+position = Vector2(-0.999939, 1.00003)
+scale = Vector2(5.15625, 5.15625)
+texture = ExtResource("2_ywy21")
+
+[node name="hand1" type="CPUParticles2D" parent="Character/CharacterBody2D"]
+position = Vector2(-104, -83)
 amount = 1666
 lifetime = 3.5
 speed_scale = 2.0
@@ -51,18 +54,29 @@ initial_velocity_max = 4.0
 angular_velocity_max = 4.0
 orbit_velocity_max = 4.0
 radial_accel_max = 13.68
+angle_max = 189.1
 scale_amount_min = 5.0
 scale_amount_max = 15.0
+color = Color(5.48691e-06, 0.720157, 0.720791, 1)
 hue_variation_max = 1.0
 hue_variation_curve = SubResource("Curve_3h184")
 
-[node name="hand2" parent="Character/CharacterBody2D" index="2"]
+[node name="hand2" type="CPUParticles2D" parent="Character/CharacterBody2D"]
+position = Vector2(87, -85)
 amount = 1666
-lifetime = 44.0
+lifetime = 3.5
 speed_scale = 2.0
+explosiveness = 0.67
+randomness = 0.29
+draw_order = 1
 gravity = Vector2(0, 2)
-scale_amount_max = 21.9
+initial_velocity_max = 4.0
+angular_velocity_max = 4.0
+orbit_velocity_max = 4.0
+radial_accel_max = 13.68
+angle_max = 189.1
+scale_amount_min = 5.0
+scale_amount_max = 15.0
+color = Color(5.48691e-06, 0.720157, 0.720791, 1)
 hue_variation_max = 1.0
-hue_variation_curve = SubResource("Curve_cojph")
-
-[editable path="Character"]
+hue_variation_curve = SubResource("Curve_3h184")

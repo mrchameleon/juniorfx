@@ -13,8 +13,14 @@ var target_pos = Vector2(0,0)
 func _ready():
 	while true:
 		target_pos = Vector2(
-			rng.randf_range(0, get_viewport().size.x),
-			rng.randf_range(0, get_viewport().size.y)
+			rng.randf_range(
+				0, 
+				get_viewport().size.x - 25
+			),
+			rng.randf_range(
+				0, 
+				get_viewport().size.y - 25
+			)
 		)
 		await get_tree().create_timer(0.5).timeout
 
@@ -27,13 +33,13 @@ func _process(delta):
 
 	# Optional: Handle edge of screen logic
 	if character_body_2d.position.x < 0:
-		character_body_2d.position.x = 0
+		character_body_2d.global_position.x = 0
 	if character_body_2d.position.y < 0:
-		character_body_2d.position.y = 0
+		character_body_2d.global_position.y = 0
 	if character_body_2d.position.x > get_viewport().size.x:
-		character_body_2d.position.x = get_viewport().size.x
+		character_body_2d.global_position.x = get_viewport().size.x
 	if character_body_2d.position.y > get_viewport().size.y:
-		character_body_2d.position.y = get_viewport().size.y
+		character_body_2d.global_position.y = get_viewport().size.y
 	if Input.is_action_pressed("exit"):
 		get_tree().quit()
 
