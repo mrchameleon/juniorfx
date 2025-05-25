@@ -4,12 +4,12 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n7g4i"]
 shader = ExtResource("1_k2dum")
-shader_parameter/effect_color = Color(0.612548, 0.187706, 0.354262, 1)
-shader_parameter/octave_count = 8
+shader_parameter/effect_color = Color(0.184972, 0.359336, 0.655214, 1)
+shader_parameter/octave_count = 10
 shader_parameter/amp_start = 0.5
 shader_parameter/amp_coeff = 0.5
 shader_parameter/freq_coeff = 2.0
-shader_parameter/speed = 0.5
+shader_parameter/speed = 0.25
 
 [node name="lightning" type="Node2D"]
 

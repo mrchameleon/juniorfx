@@ -36,6 +36,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3h184")
 
 [node name="Character" parent="." instance=ExtResource("1_yjip8")]
 
+[node name="CharacterBody2D" parent="Character" index="0"]
+position = Vector2(659, 299)
+
 [node name="hand1" parent="Character/CharacterBody2D" index="1"]
 amount = 1666
 lifetime = 3.5

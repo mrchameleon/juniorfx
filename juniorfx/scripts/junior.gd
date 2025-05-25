@@ -3,26 +3,26 @@ extends CharacterBody2D
 const SPEED = 200.0 # Set your desired speed
 
 var rng = RandomNumberGenerator.new()
+var target_pos = Vector2(0,0)
+
 
 @onready var character_body_2d: CharacterBody2D = $"."
 @onready var hand_1: CPUParticles2D = $hand1
 @onready var hand_2: CPUParticles2D = $hand2
 
 func _ready():
-	# mouse control
-	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-	var mouse_position = Vector2(position.x, position.y)
-	get_viewport().warp_mouse(mouse_position)
-
-func _process(delta):
-	var target_position = Vector2(
+	while true:
+		target_pos = Vector2(
 			rng.randf_range(0, get_viewport().size.x),
 			rng.randf_range(0, get_viewport().size.y)
 		)
+		await get_tree().create_timer(0.5).timeout
+
+func _process(delta):
 
 	# Move the sprite towards the target position
 	var speed = 400  # Adjust for desired speed
-	var direction = (target_position - character_body_2d.position).normalized()
+	var direction = (target_pos - character_body_2d.position).normalized()
 	character_body_2d.position += direction * speed * delta
 
 	# Optional: Handle edge of screen logic
@@ -44,15 +44,9 @@ func _input(event):
 		#character_body_2d.global_position = get_global_mouse_position()
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-			hand_1.emitting = true
-			get_viewport().set_input_as_handled()
-		if event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
-			hand_1.emitting = false
+			hand_2.emitting = !hand_1.emitting
 			get_viewport().set_input_as_handled()
 
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed():
-			hand_2.emitting = true
-			get_viewport().set_input_as_handled()
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.is_released():
-			hand_2.emitting = false
+			hand_2.emitting = !hand_2.emitting
 			get_viewport().set_input_as_handled()
