@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://qkr06ty81cdb"]
+
+[ext_resource type="Script" uid="uid://bkq6s1q73tn85" path="res://scenes/firework.gd" id="1_rhpnd"]
+
+[sub_resource type="Curve" id="Curve_rhpnd"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0.0124378, 0.016899), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Firework" type="Node2D"]
+script = ExtResource("1_rhpnd")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CharacterBody2D"]
+emitting = false
+amount = 35
+lifetime = 1.34
+one_shot = true
+explosiveness = 0.86
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 360.0
+scale_amount_max = 8.0
+color = Color(1, 0.509804, 0, 1)
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_rhpnd")
