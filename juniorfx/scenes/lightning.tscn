@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dohnunstwkfv0"]
+
+[ext_resource type="Shader" uid="uid://c0e4tdq0dhk76" path="res://scenes/lightning.gdshader" id="1_k2dum"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7g4i"]
+shader = ExtResource("1_k2dum")
+shader_parameter/effect_color = Color(0.612548, 0.187706, 0.354262, 1)
+shader_parameter/octave_count = 8
+shader_parameter/amp_start = 0.5
+shader_parameter/amp_coeff = 0.5
+shader_parameter/freq_coeff = 2.0
+shader_parameter/speed = 0.5
+
+[node name="lightning" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_n7g4i")
+offset_right = 561.0
+offset_bottom = 561.0

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyyqq6vp606x4"]
+
+[ext_resource type="Shader" uid="uid://cela2r30eaeur" path="res://swirl.gdshader" id="1_2g6he"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0th4"]
+shader = ExtResource("1_2g6he")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_b0th4")
+offset_right = 1168.0
+offset_bottom = 672.0

@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://c04q3h0l1ks6y"]
+
+[ext_resource type="PackedScene" uid="uid://0nlpo04877a" path="res://scenes/junior.tscn" id="1_yjip8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3h184"]
+bg_color = Color(0.00748452, 0.00238963, 0.00077146, 1)
+
+[sub_resource type="Curve" id="Curve_3h184"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0.295455, 0.235955), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_cojph"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0.238636, 0.303371), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Draw" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 2
+offset_left = 1596.0
+offset_top = 16.0
+offset_right = 2037.0
+offset_bottom = 95.0
+theme_override_font_sizes/normal_font_size = 23
+text = "gravity: 2
+press q to exit"
+
+[node name="BlackPanel" type="Panel" parent="."]
+offset_left = -270.0
+offset_top = -270.0
+offset_right = 3662.0
+offset_bottom = 2503.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3h184")
+
+[node name="Character" parent="." instance=ExtResource("1_yjip8")]
+
+[node name="hand1" parent="Character/CharacterBody2D" index="1"]
+amount = 1666
+lifetime = 3.5
+speed_scale = 2.0
+explosiveness = 0.67
+randomness = 0.29
+draw_order = 1
+gravity = Vector2(0, 2)
+initial_velocity_max = 4.0
+angular_velocity_max = 4.0
+orbit_velocity_max = 4.0
+radial_accel_max = 13.68
+scale_amount_min = 5.0
+scale_amount_max = 15.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_3h184")
+
+[node name="hand2" parent="Character/CharacterBody2D" index="2"]
+amount = 1666
+lifetime = 44.0
+speed_scale = 2.0
+gravity = Vector2(0, 2)
+scale_amount_max = 21.9
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_cojph")
+
+[editable path="Character"]
